@@ -1,0 +1,28 @@
+version: '3.8'
+services:
+  app:
+    network_mode: "host"
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata 
+    ports:
+      - "5432:5432"
+    network_mode: "host"
+    volumes: 
+      - ./.docker-data/postgres/data:/var/lib/postgresql/data
