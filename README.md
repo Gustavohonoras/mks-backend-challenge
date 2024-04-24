@@ -2,6 +2,8 @@
 
 Sou o Gustavo Honorato e abaixo estão as instruções para rodar este projeto!
 
+## Proposta Salário
+R$ 3.200,00
 ## Stack Utilizada no Projeto
 
 - TypeScript: 10 meses de experiência
